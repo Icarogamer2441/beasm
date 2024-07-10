@@ -1,0 +1,19 @@
+.64bit
+.data
+    msg: db 'Hello world!', 10, 0;
+    msglen: equ $ - msg - 1;
+.text
+glb _start
+/* simple macro */
+@macro print 2
+    push %1
+    push %2
+    pscall
+@end
+
+_start->
+    print msglen, msg;
+
+    push 0
+    exit
+<-
