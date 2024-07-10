@@ -1,0 +1,24 @@
+/* using 32 bits */
+.32bit
+/* .64bit */
+/* .bin */
+/* _nc->
+  jmp $
+<-
+*/
+/* nc is to create code outside labels */
+.data
+    msg: db 'Hello world!', 10, 0;
+    msg_len: equ $ - msg - 1;
+.text
+glb _start
+_start->
+    /* pscall supports 64 and 32 bits */
+    push msg_len
+    push msg
+    pscall
+
+    /* exit supports x86_64 and x86 */
+    push 0
+    exit
+<-
