@@ -216,8 +216,6 @@ def comp(code, output):
                         tokenpos += 1
                         out.write(f"  call {token}\n")
                     elif token == "ret":
-                        token = tokens[tokenpos]
-                        tokenpos += 1
                         out.write(f"  ret\n")
                     elif token == "lea":
                         token = tokens[tokenpos]
